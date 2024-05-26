@@ -19,8 +19,8 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->name,
             'price' => $this->faker->randomFloat(2, 1, 100),
-            'description' => "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRIZ-zcvTn4xC4qFWWY-1qP5JzBQUDdNcQwbaqxDmePLqWERKNyew3s1nqJwuCFkyCax5-1O0oRvH9OCbIFjdg4vh6vxsL4ILE3ttsXUCnQinbX-w_16L-9sg&usqp=CAE",
-            'image' => $this->faker->imageUrl(),
+            'description' => $this->faker->text,
+            'image' => "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRIZ-zcvTn4xC4qFWWY-1qP5JzBQUDdNcQwbaqxDmePLqWERKNyew3s1nqJwuCFkyCax5-1O0oRvH9OCbIFjdg4vh6vxsL4ILE3ttsXUCnQinbX-w_16L-9sg&usqp=CAE"
                 ];
     }
 }
