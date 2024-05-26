@@ -23,5 +23,5 @@ Route::get('vSLeuXGwmDsRwYjAggjXMbqPVSSSSSaywn', function () {
     return 'Migrated';
 });
 
-
+// /TRU
 // Route::get('/products', 'ProductController@index');
