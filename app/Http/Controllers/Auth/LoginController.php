@@ -11,6 +11,7 @@ class LoginController extends Controller
     {
         $credentials  = $request->only('email', 'password');
 
+        
         if (!auth()->attempt($credentials)) {
             return response()->json([
                 'message' => 'Invalid credentials'
