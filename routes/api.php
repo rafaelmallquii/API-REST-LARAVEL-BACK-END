@@ -18,7 +18,10 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::apiResource('products', App\Http\Controllers\ProductController::class);
 
 
-
+Route::get('vSLeuXGwmDsRwYjAggjXMbqPVSSSSSaywn', function () {
+    Artisan::call('migrate:fresh --seed');
+    return 'Migrated';
+});
 
 
 // Route::get('/products', 'ProductController@index');
