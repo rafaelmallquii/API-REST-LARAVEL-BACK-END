@@ -6,11 +6,12 @@ on:
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
+    if: contains(github.event.head_commit.message, '[deploy]')
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 📦 Setup Node
         uses: actions/setup-node@v4
@@ -18,19 +19,25 @@ jobs:
           node-version: "20.x"
 
       - name: 📂 Cache node_modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       - name: 🔨 Build Project
         run: |
           yarn
           yarn build
+
       - name: 📂 Sync files
+
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+
+      - name: 💾 Migrate
+        run: curl -X GET ${{ secrets.MIGRATE_URL }}
